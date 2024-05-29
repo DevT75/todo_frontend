@@ -13,12 +13,12 @@ export default ({ title, desc, isCompleted, id, onDelete, onEdit, setTodos }) =>
     const toggleModal = () => setIsModelOpen(!isModelOpen);
     const [updatedTitle, setUpdatedTitle] = useState(title);
     const [updatedDesc, setUpdatedDesc] = useState(desc);
-    const [updateDue, setUpdateDue] = useState(isCompleted);
-
+    const [updateDue, setUpdateDue] = useState(null);
+    const [updateStatus,setUpdateStatus] = useState(isCompleted);
     const handleUpdate = async (e) => {
         e.preventDefault();
         console.log({ updatedTitle, updatedDesc });
-        await updateTodo(id, { title: updatedTitle, description: updatedDesc, completed: updateDue });
+        await updateTodo(id, { title: updatedTitle, description: updatedDesc, status: updateStatus });
         const data = await fetchTodos();
         setTodos(data);
         toggleModal();
@@ -72,7 +72,7 @@ export default ({ title, desc, isCompleted, id, onDelete, onEdit, setTodos }) =>
                                     onChange={(e) => { setUpdatedDesc(e.target.value) }}
                                     value={updatedDesc}
                                 />
-                                <input type='checkbox' onChange={(e) => { setUpdateDue(e.target.checked) }} checked={isCompleted} className='p-2' />
+                                <input type='checkbox' onChange={(e) => { setUpdateStatus(e.target.checked) }} defaultChecked={isCompleted} className='p-2' />
                                 <button type="submit" className='mt-6 w-1/2 bg-black text-white font-semibold hover:bg-white hover:border-2 hover:border-black hover:text-black rounded p-4'
                                 >Update Task</button>
                             </form>

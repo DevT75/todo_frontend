@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(new Array());
     const router = useRouter();
     // useEffect(()=>{
     //     sessionStorage.setItem('token',token);
@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
         setToken(null);
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
         router.push('/login');
     };
 

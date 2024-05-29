@@ -2,17 +2,14 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const LoginForm = () => {
-    const { handleLogin } = useAuth();
+    const { user,handleLogin } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await handleLogin( username, password );
-        const user = {
-            username : username,
-            password : password
-        }
+        const user = username;
         sessionStorage.setItem('user', JSON.stringify(user));
     };
 

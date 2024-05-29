@@ -11,7 +11,7 @@ const Home = () => {
   const { user, handleLogout } = useAuth();
   const router = useRouter();
   useEffect(() => {
-    const token = sessionStorage.getItem('access_token');
+    const token = sessionStorage.getItem('refresh_token');
     if (!token) {
       router.push('/login');
     }
