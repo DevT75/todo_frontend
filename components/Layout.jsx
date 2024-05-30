@@ -1,8 +1,17 @@
-import { Router } from 'next/router';
 import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
   const { user, handleLogout } = useAuth();
+  const Router = useRouter();
+  const handleClick = () => {
+    if(user){
+      handleLogout();
+    }
+    else{
+      Router.push('/login');
+    }
+  }
   return (
     <div className="min-h-screen w-full bg-custom-gradient filter-custom-filter overflow-x-hidden flex flex-col justify-center items-center">
       <div className="z-10 w-full h-8 top-0 absolute flex flex-row justify-between items-center py-8 md:px-8 px-4 bg-white/30 backdrop-blur-lg shadow-md">
@@ -11,11 +20,10 @@ const Layout = ({ children }) => {
           {
             user && <div className='text-white font-semibold'>Hello, {user}</div>
           }
-          <div className=" text-black font-semibold hover:text-black bg-white rounded p-2 hover:cursor-pointer" onClick={user ? ()=>{Router.push('/login')} : handleLogout}>{
+          <div className=" text-black font-semibold hover:text-black bg-white rounded p-2 hover:cursor-pointer" onClick={handleClick}>{
             user ? 'Logout' : 'Login'
           }</div>
         </div>
-        
       </div>
       {children}
     </div>
