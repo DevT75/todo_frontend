@@ -114,7 +114,7 @@ export default ({ title, desc, priority, due_date, isCompleted, id, onDelete, on
                                             name='status'
                                             onChange={(e) => { setUpdatedStatus(e.target.checked) }}
                                             className='p-2'
-                                            checked={isCompleted}
+                                            defaultChecked={isCompleted}
                                         />
                                     </div>
                                     <div className='flex flex-row gap-2'>
@@ -124,7 +124,7 @@ export default ({ title, desc, priority, due_date, isCompleted, id, onDelete, on
                                             name='status'
                                             onChange={(e) => { setUpdatedStatus(e.target.checked) }}
                                             className='p-2'
-                                            checked={!isCompleted}
+                                            defaultChecked={!isCompleted}
                                         />
                                     </div>
 

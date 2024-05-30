@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
 const LoginForm = () => {
     const { user,handleLogin } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
         await handleLogin( username, password );
@@ -33,6 +34,9 @@ const LoginForm = () => {
                     required
                     className='px-4 py-4 rounded-md w-full'
                 />
+                <div className='w-full text-white text-sm hover:cursor-pointer flex flex-row justify-end items-center' onClick={() => { router.push('/register') }}>
+                    New Here? Register
+                </div>
                 <button type="submit" className='bg-black text-white px-4 py-4 rounded-md hover:bg-white hover:text-black hover:font-semibold w-3/4'>Login</button>
             </form>
         </div>
