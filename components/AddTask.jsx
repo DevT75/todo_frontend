@@ -26,6 +26,7 @@ const AddTask = () => {
         setTitle('');
         setDesc('');
         setDueDate(null)
+        setPriority('None');
         closeModal();
     }
     return (
