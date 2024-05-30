@@ -8,10 +8,10 @@ import { useRouter } from 'next/router';
 import AddTask from './AddTask';
 
 const Home = () => {
-  const { user, token , handleLogout } = useAuth();
+  const { user , handleLogout } = useAuth();
   const router = useRouter();
   useEffect(() => {
-    // const token = sessionStorage.getItem('refresh_token');
+    const token = sessionStorage.getItem('access_token');
     if (!token) {
       router.push('/login');
     }
