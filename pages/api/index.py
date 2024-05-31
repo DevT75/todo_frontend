@@ -2,6 +2,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/api/hello")
 async def home():
     return {"Response" : "Hello World!!!"}
