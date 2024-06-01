@@ -10,18 +10,19 @@ const TodoList = () => {
     const toggleToolkit = () => setOpenToolkit(!openToolKit);
     const [localTodos, setLocalTodos] = useState(new Array(todos));
     let arr = new Array();
-    const loadTodos = async () => {
-        const data = await fetchTodos();
-        setTodos(data);
-        setLocalTodos(data);
-    };
+
     useEffect(() => {
+        const loadTodos = async () => {
+            const data = await fetchTodos();
+            setTodos(data);
+            setLocalTodos(data);
+        };
         loadTodos();
-    }, []);
+    }, [setTodos]);
 
     useEffect(() => {
         getAll();
-    }, [todos])
+    }, [getAll, todos])
     useEffect(() => {
         console.log(localTodos);
     }, [localTodos])
