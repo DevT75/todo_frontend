@@ -115,7 +115,7 @@ const TodoList = () => {
             </div>
             <div className='mt-4 w-full h-full flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center'>
                 {localTodos.map((todo) => (
-                    <Todo key={todo.todo_id}
+                    <Todo key={`${todo.todo_id + todo.title}`}
                         title={todo.title}
                         desc={todo.description}
                         isCompleted={todo.status}

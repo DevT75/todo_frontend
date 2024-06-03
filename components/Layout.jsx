@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
   return (
     <div className="min-h-screen w-full bg-custom-gradient filter-custom-filter overflow-x-hidden flex flex-col justify-center items-center">
       <div className="z-10 w-full h-8 top-0 absolute flex flex-row justify-between items-center py-8 md:px-8 px-4 bg-white/30 backdrop-blur-lg shadow-md">
-        <div className="w-72 items-center justify-center flex text-white text-3xl">Todo App</div>
+        <div className="ml-10 sm:ml-0 w-72 items-center justify-center flex text-white text-3xl">Todo App</div>
         <div className='relative'>
           {
             <AiOutlineUser className='bg-white text-black rounded-full p-2' size={40} onClick={toggleClick} />
