@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import Todo from './Todo';
 
 const TodoList = () => {
-    const { todos, setTodos } = useAuth();
+    const { todos, setTodos,user } = useAuth();
     const [openToolKit, setOpenToolkit] = useState(false);
     const toggleToolkit = () => setOpenToolkit(!openToolKit);
     const [localTodos, setLocalTodos] = useState(new Array(todos));
@@ -16,8 +16,8 @@ const TodoList = () => {
         setLocalTodos(data);
     };
     useEffect(() => {
-        loadTodos();
-    }, []);
+        if(user) loadTodos();
+    }, [user]);
 
     useEffect(() => {
         getAll();
