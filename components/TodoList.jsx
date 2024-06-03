@@ -61,7 +61,7 @@ const TodoList = () => {
             arr.sort((a, b) => {
                 return priorityValue(b.priority) - priorityValue(a.priority);
             });
-            return arr;
+            return arr.filter(todo => todo.status === false);
         });
     };
     const sortByDueDate = () => {
@@ -78,7 +78,7 @@ const TodoList = () => {
                     return 0; // Both due dates are null
                 }
             });
-            return arr;
+            return arr.filter(todo => todo.status === false);
         });
     };
     const getAll = () => {
@@ -88,17 +88,17 @@ const TodoList = () => {
     return (
         <div className=''>
             <div className='w-full h-full flex flex-row justify-center items-center md:gap-2 gap-1'>
-                <button className='rounded-2xl bg-white text-sm text-black border-2 p-1 px-3 border-white' onClick={getAll}>All</button>
+                <button className='rounded-2xl bg-white text-sm text-black border-2 py-1 md:px-3 px-2 border-white' onClick={getAll}>All</button>
                 <div
-                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:via-white lg:block" />
-                <button className='rounded-2xl bg-white text-sm text-black border-2 p-1 px-2 border-white' onClick={sortByCompleted}>Completed</button>
+                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 mt-2 dark:via-white lg:block" />
+                <button className='rounded-2xl bg-white text-sm text-black border-2 py-1 px-2 border-white' onClick={sortByCompleted}>Completed</button>
                 <div
-                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:via-white lg:block" />
+                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 mt-2 dark:via-white lg:block" />
 
-                <button className='rounded-2xl bg-white text-sm text-black border-2 p-1 px-2 border-white' onClick={sortByPending}>Pending</button>
+                <button className='rounded-2xl bg-white text-sm text-black border-2 py-1 px-2 border-white' onClick={sortByPending}>Pending</button>
                 <div
-                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:via-white lg:block" />
-                <div className='relative rounded-2xl bg-white text-sm text-black border-2 p-1 pl-3 border-white flex flex-row items-center gap-1' onClick={toggleToolkit}>
+                    className="h-[2em] w-[2px] self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 mt-2 dark:via-white lg:block" />
+                <div className='relative rounded-2xl bg-white text-sm text-black border-2 py-1 pl-2 border-white flex flex-row items-center gap-1' onClick={toggleToolkit}>
                     <span className=''>Sort By</span>
                     {
                         openToolKit ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />
